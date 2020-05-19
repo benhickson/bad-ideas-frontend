@@ -1,0 +1,14 @@
+{
+  "ideas": [
+    {
+      "id": 1,
+      "text": "This is some text, yo",
+      "image": "https://miro.medium.com/fit/c/96/96/2*CL9NSCtKOsDwWNz6IkZ0zA.jpeg"
+    },
+    {
+      "id": 2,
+      "text": "This is some long-ass text that's definitely going to overflow if you don't \"make your bed, bucko\".",
+      "image": "https://i1.wp.com/blog.logrocket.com/wp-content/uploads/2019/03/1_orWFEkEBGIK4xFXwF7BCMA.jpeg?w=400&ssl=1"
+    }
+  ]
+}

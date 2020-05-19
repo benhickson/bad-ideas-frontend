@@ -1,5 +1,15 @@
+*:focus {
+  outline: none;
+}
+
 body {
   font-family: Roboto;
+}
+button {
+  font-family: inherit;
+  color: inherit;
+  background: none;
+  border: none;
 }
 
 #navbar {
@@ -37,7 +47,7 @@ body {
   cursor: pointer;
 }
 
-.nav-link:hover{
+.nav-link:hover, .nav-link:focus{
   /* text-decoration: underline; */
   background-color: #ffffff77;
 }
@@ -48,8 +58,12 @@ body {
   overflow: scroll;
   bottom: 0;
   position: fixed;
-  padding: 12px;
+  padding: 12px 24px;
   box-sizing: border-box;
+}
+
+#sidebar {
+  padding: 12px 0;
 }
 
 #sidebar {
@@ -60,6 +74,7 @@ body {
 #main-content{
   width: calc(100vw - 220px);
   left: 220px;
+  text-align: center;
 }
 
 #login {
@@ -96,14 +111,14 @@ body {
   text-transform: uppercase;
   border: none;
   cursor: pointer;
-  background-color: #fff5;
+  background-color: #fff7;
   position: absolute;
   bottom: 60px;
   left: 50%;
   transform: translateX(-50%);
 }
-#login-button:hover {
-  background-color: #fff9;
+#login-button:hover, #login-button:focus {
+  background-color: #fffb;
 }
 .login-fields {
   display: block;
@@ -118,4 +133,74 @@ body {
   border-radius: 2px;
   width: 180px;
   margin-top: 15px;
+}
+
+.sidebar-link{
+  display: block;
+  color: black;
+  padding: 10px 12px;
+  text-decoration: none;
+  border-bottom: 1px solid #0003;
+  font-size: 0.85em;
+}
+.sidebar-link.selected{
+  background-color: #fff;
+  border-right: 5px solid #f7047f;
+}
+
+#sidebar-heading {
+  border-bottom: 1px solid #0003;
+  padding-bottom: 8px;
+}
+.sidebar-heading-link{
+  border: none;
+  background: none;
+  padding: 0 12px;
+  font-family: inherit;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.8em;
+  color: #0008;
+  margin-top: 4px;
+}
+
+.idea-wrapper{
+  display: inline-table;
+  text-align: center;
+  border-spacing: 0;
+  outline: 10px solid #eee;
+  outline-offset: -10px;
+}
+.idea-wrapper img{
+  height: 300px;
+  display: table-cell;
+}
+.idea-wrapper .idea-text{
+  display: table-caption;
+  caption-side: bottom;
+  background-color: #0001;
+  margin: 0;
+  padding: 15px 22px;
+  text-align: left;
+}
+
+#generator-bar {
+  background-color: #5424a9;
+  color: #fffd;
+  padding: 18px 32px;
+  border-radius: 150px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+#generate-button {
+  padding: 10px 16px;
+  font-size: 0.9em;
+  font-weight: 700;
+  background-color: #fff2;
+  /* border-radius: 5px; */
+  cursor: pointer;
+}
+#generate-button:hover, #generate-button:active {
+  background-color: #fff3;
+  color: white;
 }
