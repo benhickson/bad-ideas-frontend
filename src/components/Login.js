@@ -14,7 +14,7 @@ const Login = (props) => {
       <label className="login-fields" htmlFor="password">Password
         <input type="password" name="password" id="password" value={password} onChange={e => setPassword(e.target.value)} />
       </label>
-      <button id="login-button" onClick={() => props.setLoggedIn(true)}>Log In</button>
+      <button id="login-button" onClick={() => props.setLoggedIn(true)}>Sign In</button>
     </div>
   );
 }
