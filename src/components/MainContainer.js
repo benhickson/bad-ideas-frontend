@@ -14,19 +14,21 @@ const MainContainer = ({ideaId}) => {
   });
 
   useEffect(() => {
-    const fetchIdea = async () => {
-      try {
-        const response = await axios.get(IDEAS + '/' + ideaId, {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
-          }
-        });
-        setIdea(d => ({...d, loaded: true, content: response.data}));
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchIdea();
+    if (ideaId) {
+      const fetchIdea = async () => {
+        try {
+          const response = await axios.get(IDEAS + '/' + ideaId, {
+            headers: {
+              'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
+            }
+          });
+          setIdea(d => ({...d, loaded: true, content: response.data}));
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchIdea();      
+    }
   },[ideaId]);
 
   return (
