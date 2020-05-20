@@ -1,4 +1,6 @@
-const API_ENDPOINT = 'http://localhost:3000';
-const IDEAS_ENDPOINT = API_ENDPOINT+'/ideas';
+const API_ENDPOINT = 'http://localhost:3000/api/v1';
+const IDEAS = API_ENDPOINT+'/ideas';
+const RECENT_IDEAS = API_ENDPOINT+'/ideas/recent';
+const LOGIN = API_ENDPOINT+'/login';
 
-export default { API_ENDPOINT, IDEAS_ENDPOINT };
+export { API_ENDPOINT, IDEAS, RECENT_IDEAS, LOGIN };

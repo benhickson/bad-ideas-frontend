@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import MainContainer from './components/MainContainer';
 import Navbar from './components/Navbar';
@@ -8,16 +8,24 @@ import Login from './components/Login';
 const App = () => {
 
   const [loggedIn, setLoggedIn] = useState(false);
+  const [currentIdeaId, setCurrentIdeaId] = useState(null);
 
-  const currentIdea = 2;
+  useEffect(() => {
+    // log in the user if they have an auth_token set
+    if (localStorage.getItem('auth_token')) {
+      setLoggedIn(true);
+    }
+  }, []);
+
+  const currentIdea = 3;
 
   return (
     loggedIn
     ?
       <>
         <Navbar setLoggedIn={setLoggedIn} />
-        <Sidebar currentSelectedIdea={currentIdea} />
-        <MainContainer ideaId={currentIdea} />
+        <Sidebar currentIdeaId={currentIdeaId} setCurrentIdeaId={setCurrentIdeaId} />
+        <MainContainer ideaId={currentIdeaId} />
       </>
     :
       <Login setLoggedIn={setLoggedIn} />

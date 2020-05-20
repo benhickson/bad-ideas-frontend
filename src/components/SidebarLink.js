@@ -1,8 +1,8 @@
 import React from 'react';
 
-const SidebarLink = ({id, text, selected}) => {
+const SidebarLink = ({id, text, selected, setCurrentIdeaId}) => {
   return (
-    <a href={id} className={`sidebar-link ${selected ? 'selected' : null}`}>{text}</a>
+    <button onClick={() => setCurrentIdeaId(id)} className={`sidebar-link ${selected ? 'selected' : null}`}>{text}</button>
   );
 }
 

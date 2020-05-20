@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import constants from '../data/constants';
+import { IDEAS } from '../data/constants';
 
 import Idea from './Idea';
 import GeneratorBar from './GeneratorBar';
@@ -16,7 +16,11 @@ const MainContainer = ({ideaId}) => {
   useEffect(() => {
     const fetchIdea = async () => {
       try {
-        const response = await axios.get(constants.IDEAS_ENDPOINT + '/' + ideaId);
+        const response = await axios.get(IDEAS + '/' + ideaId, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
+          }
+        });
         setIdea(d => ({...d, loaded: true, content: response.data}));
       } catch (error) {
         console.log(error);
@@ -29,9 +33,11 @@ const MainContainer = ({ideaId}) => {
     <div id="main-content">
       <GeneratorBar />
       {
-        idea.loaded
-        ? <Idea id={idea.content.id} text={idea.content.text} image={idea.content.image} />
-        : <p>Loading idea...</p>
+        ideaId
+        ? idea.loaded
+          ? <div><Idea idea={idea.content} /></div>
+          : <p>Loading idea...</p>
+        : <p>Generate a new idea above, or select one from history on left.</p>
       }
     </div>
   );

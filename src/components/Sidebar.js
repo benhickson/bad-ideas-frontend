@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-import constants from '../data/constants';
+import { RECENT_IDEAS } from '../data/constants';
 
 import SidebarLink from './SidebarLink';
 
-const Sidebar = ({currentSelectedIdea}) => {
+const Sidebar = ({currentIdeaId, setCurrentIdeaId}) => {
 
   const [data, setData] = useState({
     ideas: [],
@@ -15,8 +15,12 @@ const Sidebar = ({currentSelectedIdea}) => {
   useEffect(()=> {
     const fetchRecentIdeas = async () => {
       try {
-        const response = await axios.get(constants.IDEAS_ENDPOINT);
-        setData(d => ({...d, ideasLoaded: true, ideas: response.data}));
+        const response = await axios.get(RECENT_IDEAS, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
+          }
+        });
+        setData(d => ({...d, ideasLoaded: true, ideas: response.data.ideas}));
       } catch (error) {
         console.log(error);
       }
@@ -24,10 +28,10 @@ const Sidebar = ({currentSelectedIdea}) => {
     fetchRecentIdeas();
   }, []);
 
-  const generateIdeaComponents = (ideas, currentSelectedIdea) => {
+  const generateIdeaComponents = (ideas, currentIdeaId) => {
     return ideas.map(idea => {
-      const selected = (idea.id === currentSelectedIdea) ? true : false;
-      return <SidebarLink key={idea.id} id={idea.id} text={idea.text} selected={selected} />
+      const selected = (idea.id === currentIdeaId) ? true : false;
+      return <SidebarLink key={idea.id} id={idea.id} text={idea.text} selected={selected} setCurrentIdeaId={setCurrentIdeaId} />
     });
   };
 
@@ -38,7 +42,7 @@ const Sidebar = ({currentSelectedIdea}) => {
       </div>
       {
         data.ideasLoaded
-        ? generateIdeaComponents(data.ideas, currentSelectedIdea)
+        ? generateIdeaComponents(data.ideas, currentIdeaId)
         : <p>Loading...</p>
       }
     </div>
