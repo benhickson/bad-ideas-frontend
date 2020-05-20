@@ -188,7 +188,7 @@ html {
   padding: 18px 17px 18px 12px;
   color: #000;
   cursor: initial;
-  max-height: initial;
+  max-height: 1000px;
 }
 
 #sidebar-heading {
