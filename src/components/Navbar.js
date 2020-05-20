@@ -9,7 +9,7 @@ const Navbar = ({setLoggedIn}) => {
         localStorage.removeItem('auth_token');
         setLoggedIn(false);
       }}>Log Out</button>
-      {/* <a className="nav-link" href="/">Link 1</a> */}
+      <a className="nav-link" href="/">Add Content</a>
       {/* <a className="nav-link" href="">Link 2</a> */}
     </div>
   );
