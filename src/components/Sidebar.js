@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import { RECENT_IDEAS } from '../data/constants';
@@ -7,21 +7,23 @@ import SidebarLink from './SidebarLink';
 
 const Sidebar = ({currentIdeaId, setCurrentIdeaId, ideasData, setIdeasData}) => {
 
+  const [page, setPage] = useState(1)
+
   useEffect(()=> {
     const fetchRecentIdeas = async () => {
       try {
-        const response = await axios.get(RECENT_IDEAS, {
+        const response = await axios.get(RECENT_IDEAS+'/'+page, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
           }
         });
-        setIdeasData(d => ({...d, ideasLoaded: true, ideas: response.data.ideas}));
+        setIdeasData(d => ({...d, ideasLoaded: true, ideas: [...d.ideas, ...response.data.ideas] }));
       } catch (error) {
         console.log(error);
       }
     };
     fetchRecentIdeas();
-  }, [setIdeasData]);         // does this make sense to use in the dependency array?
+  }, [setIdeasData, page]);         // does this make sense to use in the dependency array?
 
   const generateIdeaComponents = (ideas, currentIdeaId) => {
     return ideas.map(idea => {
@@ -30,16 +32,19 @@ const Sidebar = ({currentIdeaId, setCurrentIdeaId, ideasData, setIdeasData}) => 
     });
   };
 
+  console.log(ideasData);
+
   return (
     <div id="sidebar">
       <div id="sidebar-heading">
-        <button className="sidebar-heading-link">Recent Ideas</button>
+        <button style={{cursor: 'initial'}} className="sidebar-heading-link">Recent Ideas</button>
       </div>
       {
         ideasData.ideasLoaded
         ? generateIdeaComponents(ideasData.ideas, currentIdeaId)
         : <p>Loading...</p>
       }
+      <button onClick={() => setPage(page + 1)} className="sidebar-heading-link"><br />Load More<br />&nbsp;</button>
     </div>
   );
 };
