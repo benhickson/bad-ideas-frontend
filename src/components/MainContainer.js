@@ -6,7 +6,7 @@ import { IDEAS } from '../data/constants';
 import Idea from './Idea';
 import GeneratorBar from './GeneratorBar';
 
-const MainContainer = ({ideaId}) => {
+const MainContainer = ({ideaId, setCurrentIdeaId, setIdeasData}) => {
 
   const [idea, setIdea] = useState({
     content: {},
@@ -33,7 +33,7 @@ const MainContainer = ({ideaId}) => {
 
   return (
     <div id="main-content">
-      <GeneratorBar />
+      <GeneratorBar setCurrentIdeaId={setCurrentIdeaId} setIdeasData={setIdeasData} />
       {
         ideaId
         ? idea.loaded

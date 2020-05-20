@@ -27,7 +27,7 @@ const App = () => {
       <>
         <Navbar setLoggedIn={setLoggedIn} setIdeasData={setIdeasData} />
         <Sidebar currentIdeaId={currentIdeaId} setCurrentIdeaId={setCurrentIdeaId} ideasData={ideasData} setIdeasData={setIdeasData} />
-        <MainContainer ideaId={currentIdeaId} setCurrentIdeaId={setCurrentIdeaId} />
+        <MainContainer ideaId={currentIdeaId} setCurrentIdeaId={setCurrentIdeaId} setIdeasData={setIdeasData} />
       </>
     :
       <Login setLoggedIn={setLoggedIn} />

@@ -21,7 +21,7 @@ const Sidebar = ({currentIdeaId, setCurrentIdeaId, ideasData, setIdeasData}) => 
       }
     };
     fetchRecentIdeas();
-  });
+  }, [setIdeasData]);         // does this make sense to use in the dependency array?
 
   const generateIdeaComponents = (ideas, currentIdeaId) => {
     return ideas.map(idea => {
