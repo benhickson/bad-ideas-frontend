@@ -9,6 +9,10 @@ const App = () => {
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentIdeaId, setCurrentIdeaId] = useState(null);
+  const [ideasData, setIdeasData] = useState({
+    ideas: [],
+    ideasLoaded: false,
+  });
 
   useEffect(() => {
     // log in the user if they have an auth_token set
@@ -17,15 +21,13 @@ const App = () => {
     }
   }, []);
 
-  const currentIdea = 3;
-
   return (
     loggedIn
     ?
       <>
-        <Navbar setLoggedIn={setLoggedIn} />
-        <Sidebar currentIdeaId={currentIdeaId} setCurrentIdeaId={setCurrentIdeaId} />
-        <MainContainer ideaId={currentIdeaId} />
+        <Navbar setLoggedIn={setLoggedIn} setIdeasData={setIdeasData} />
+        <Sidebar currentIdeaId={currentIdeaId} setCurrentIdeaId={setCurrentIdeaId} ideasData={ideasData} setIdeasData={setIdeasData} />
+        <MainContainer ideaId={currentIdeaId} setCurrentIdeaId={setCurrentIdeaId} />
       </>
     :
       <Login setLoggedIn={setLoggedIn} />

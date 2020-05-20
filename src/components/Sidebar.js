@@ -1,16 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 
 import { RECENT_IDEAS } from '../data/constants';
 
 import SidebarLink from './SidebarLink';
 
-const Sidebar = ({currentIdeaId, setCurrentIdeaId}) => {
-
-  const [data, setData] = useState({
-    ideas: [],
-    ideasLoaded: false,
-  });
+const Sidebar = ({currentIdeaId, setCurrentIdeaId, ideasData, setIdeasData}) => {
 
   useEffect(()=> {
     const fetchRecentIdeas = async () => {
@@ -20,13 +15,13 @@ const Sidebar = ({currentIdeaId, setCurrentIdeaId}) => {
             'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
           }
         });
-        setData(d => ({...d, ideasLoaded: true, ideas: response.data.ideas}));
+        setIdeasData(d => ({...d, ideasLoaded: true, ideas: response.data.ideas}));
       } catch (error) {
         console.log(error);
       }
     };
     fetchRecentIdeas();
-  }, []);
+  });
 
   const generateIdeaComponents = (ideas, currentIdeaId) => {
     return ideas.map(idea => {
@@ -41,8 +36,8 @@ const Sidebar = ({currentIdeaId, setCurrentIdeaId}) => {
         <button className="sidebar-heading-link">Recent Ideas</button>
       </div>
       {
-        data.ideasLoaded
-        ? generateIdeaComponents(data.ideas, currentIdeaId)
+        ideasData.ideasLoaded
+        ? generateIdeaComponents(ideasData.ideas, currentIdeaId)
         : <p>Loading...</p>
       }
     </div>

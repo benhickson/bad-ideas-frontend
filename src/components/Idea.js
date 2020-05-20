@@ -2,7 +2,10 @@ import React from 'react'
 
 const Idea = ({idea}) => {
 
-  const {id, image_alt_text, image_base_path, image_filename, text} = idea;
+  const {
+    // id, 
+    image_alt_text, image_base_path, image_filename, text
+  } = idea;
 
   return (
     <div className="idea-wrapper">
