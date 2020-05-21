@@ -4,8 +4,10 @@ import { CloudinaryContext } from 'cloudinary-react';
 import './style.scss';
 import { openUploadWidget } from '../../util/CloudinaryService';
 import { CLOUDINARY_CLOUD_NAME, CLOUDINARY_UPLOAD_PRESET, UPLOAD_IMAGE } from '../../data/constants';
-import { GOOGLE_IMAGE_SEARCH_API_KEY } from '../../data/keys';
+// import { GOOGLE_IMAGE_SEARCH_API_KEY } from '../../data/keys';
 import UploadedImage from './UploadedImage';
+
+const GOOGLE_IMAGE_SEARCH_API_KEY = process.env.REACT_APP_GOOGLE_IMAGE_SEARCH_API_KEY;
 
 const AddContent = () => {
 
