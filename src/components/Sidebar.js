@@ -7,12 +7,12 @@ import SidebarLink from './SidebarLink';
 
 const Sidebar = ({currentIdeaId, setCurrentIdeaId, ideasData, setIdeasData}) => {
 
-  const [page, setPage] = useState(1)
+  const [offset, setOffset] = useState(0)
 
   useEffect(()=> {
     const fetchRecentIdeas = async () => {
       try {
-        const response = await axios.get(RECENT_IDEAS+'/'+page, {
+        const response = await axios.get(RECENT_IDEAS+'/'+offset, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
           }
@@ -23,7 +23,7 @@ const Sidebar = ({currentIdeaId, setCurrentIdeaId, ideasData, setIdeasData}) => 
       }
     };
     fetchRecentIdeas();
-  }, [setIdeasData, page]);         // does this make sense to use in the dependency array?
+  }, [setIdeasData, offset]);         // does this make sense to use in the dependency array?
 
   const generateIdeaComponents = (ideas, currentIdeaId) => {
     return ideas.map(idea => {
@@ -44,7 +44,7 @@ const Sidebar = ({currentIdeaId, setCurrentIdeaId, ideasData, setIdeasData}) => 
         ? generateIdeaComponents(ideasData.ideas, currentIdeaId)
         : <p>Loading...</p>
       }
-      <button onClick={() => setPage(page + 1)} className="sidebar-heading-link"><br />Load More<br />&nbsp;</button>
+      <button onClick={() => setOffset(ideasData.ideas.length)} className="sidebar-heading-link"><br />Load More<br />&nbsp;</button>
     </div>
   );
 };

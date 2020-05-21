@@ -1,5 +1,4 @@
 import { Cloudinary as CoreCloudinary, Util } from 'cloudinary-core';
-import { CLOUDINARY_CLOUD_NAME } from '../data/constants';
 
 export const url = (publicId, options) => {
   const scOptions = Util.withSnakeCaseKeys(options);
@@ -10,20 +9,4 @@ export const url = (publicId, options) => {
 export const openUploadWidget = (options, callback) => {
   const scOptions = Util.withSnakeCaseKeys(options);
   window.cloudinary.openUploadWidget(scOptions, callback);
-};
-
-export const fetchPhotos = async (imageTag, setter) => {
-  const options = {
-    cloudName: CLOUDINARY_CLOUD_NAME,
-    format: 'json',
-    type: 'list',
-    version: Math.ceil(new Date().getTime() / 1000),
-  };
-
-  const urlPath = url(imageTag.toString(), options);
-
-  fetch(urlPath)
-    .then(r => r.text())
-    .then(text => (text ? setter(JSON.parse(text).resources.map(image => image.public_id)) : ''))
-    .catch(error => console.log(error));
 };
