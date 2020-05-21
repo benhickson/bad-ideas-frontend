@@ -4,6 +4,7 @@ import MainContainer from './components/MainContainer';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Login from './components/Login';
+import { Redirect } from 'react-router-dom';
 
 const App = () => {
 
@@ -30,7 +31,10 @@ const App = () => {
         <MainContainer ideaId={currentIdeaId} setCurrentIdeaId={setCurrentIdeaId} setIdeasData={setIdeasData} />
       </>
     :
-      <Login setLoggedIn={setLoggedIn} />
+      <>
+        <Redirect to="/" />
+        <Login setLoggedIn={setLoggedIn} />
+      </>
   );
 }
 

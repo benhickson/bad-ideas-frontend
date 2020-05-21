@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 
 import { IDEAS, 
@@ -36,15 +37,21 @@ const MainContainer = ({ideaId, setCurrentIdeaId, setIdeasData}) => {
 
   return (
     <div id="main-content">
-      <GeneratorBar setCurrentIdeaId={setCurrentIdeaId} setIdeasData={setIdeasData} />
-      {
-        ideaId
-        ? idea.loaded
-          ? <div><Idea idea={idea.content} /></div>
-          : <p>Loading idea...</p>
-        : <p>Generate a new idea above, or select one from history on left.</p>
-      }
-      <AddContent />
+      <Switch>
+        <Route path="/add-content">
+          <AddContent />
+        </Route>
+        <Route path="/">
+          <GeneratorBar setCurrentIdeaId={setCurrentIdeaId} setIdeasData={setIdeasData} />
+          {
+            ideaId
+            ? idea.loaded
+              ? <div><Idea idea={idea.content} /></div>
+              : <p>Loading idea...</p>
+            : <p>Generate a new idea above, or select one from history on left.</p>
+          }
+        </Route>
+      </Switch>
     </div>
   );
 }
