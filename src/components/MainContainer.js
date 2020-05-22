@@ -10,7 +10,7 @@ import Idea from './Idea';
 import GeneratorBar from './GeneratorBar';
 import AddContent from './AddContent';
 
-const MainContainer = ({ideaId, setCurrentIdeaId, setIdeasData}) => {
+const MainContainer = ({ideaId, setIdeasData}) => {
 
   const [idea, setIdea] = useState({
     content: {},
@@ -41,15 +41,14 @@ const MainContainer = ({ideaId, setCurrentIdeaId, setIdeasData}) => {
         <Route path="/add-content">
           <AddContent />
         </Route>
-        <Route path="/">
-          <GeneratorBar setCurrentIdeaId={setCurrentIdeaId} setIdeasData={setIdeasData} />
-          {
-            ideaId
-            ? idea.loaded
+        <Route path="/:idea_id">
+          <GeneratorBar setIdeasData={setIdeasData} />
+            {
+              idea.loaded
               ? <div><Idea idea={idea.content} /></div>
               : <p>Loading idea...</p>
-            : <p>Generate a new idea above, or select one from history on left.</p>
-          }
+            }
+            <p>Generate a new idea above, or select one from history on left.</p>
         </Route>
       </Switch>
     </div>

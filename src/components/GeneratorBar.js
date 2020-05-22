@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 import { GENERATE_IDEA } from '../data/constants';
+import { Redirect } from 'react-router-dom';
 
-const GeneratorBar = ({ setCurrentIdeaId, setIdeasData }) => {
+const GeneratorBar = ({ setIdeasData }) => {
+
+  const [newIdeaId, setNewIdeaId] = useState(null);
 
   const generateIdea = async () => {
     try {
@@ -13,7 +16,7 @@ const GeneratorBar = ({ setCurrentIdeaId, setIdeasData }) => {
         }
       });
       setIdeasData(d => ({ ...d, ideasLoaded: true, ideas: [response.data, ...d.ideas] }));
-      setCurrentIdeaId(response.data.id);
+      setNewIdeaId(response.data.id);
     } catch (error) {
       console.log(error);
     }
@@ -22,6 +25,11 @@ const GeneratorBar = ({ setCurrentIdeaId, setIdeasData }) => {
   return(
     <div id="generator-bar">
       <button onClick={generateIdea} id="generate-button">Generate New Idea</button>
+      {
+        newIdeaId
+        ? <Redirect to={`/${newIdeaId}`} />
+        : null
+      }
     </div>
   )
 };

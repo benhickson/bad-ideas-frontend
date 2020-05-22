@@ -4,12 +4,11 @@ import MainContainer from './components/MainContainer';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Login from './components/Login';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 
 const App = () => {
 
   const [loggedIn, setLoggedIn] = useState(false);
-  const [currentIdeaId, setCurrentIdeaId] = useState(null);
   const [ideasData, setIdeasData] = useState({
     ideas: [],
     ideasLoaded: false,
@@ -22,13 +21,19 @@ const App = () => {
     }
   }, []);
 
+  let { idea_id: currentIdeaId } = useParams();
+
+  // alternate way, without aliased destructuring
+  // let { idea_id } = useParams();
+  // let currentIdeaId = idea_id;
+
   return (
     loggedIn
     ?
       <>
         <Navbar setLoggedIn={setLoggedIn} setIdeasData={setIdeasData} />
-        <Sidebar currentIdeaId={currentIdeaId} setCurrentIdeaId={setCurrentIdeaId} ideasData={ideasData} setIdeasData={setIdeasData} />
-        <MainContainer ideaId={currentIdeaId} setCurrentIdeaId={setCurrentIdeaId} setIdeasData={setIdeasData} />
+        <Sidebar currentIdeaId={currentIdeaId} ideasData={ideasData} setIdeasData={setIdeasData} />
+        <MainContainer ideaId={currentIdeaId} setIdeasData={setIdeasData} />
       </>
     :
       <>

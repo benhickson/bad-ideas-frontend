@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 // import { CloudinaryContext, Image, Transformation } from 'cloudinary-react';
 // import { CLOUDINARY_CLOUD_NAME } from '../data/constants';
 
-const Idea = ({idea}) => {
+const Idea = ({ idea }) => {
 
   const {
     // id, 

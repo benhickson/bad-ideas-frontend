@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const SidebarLink = ({id, text, selected, setCurrentIdeaId}) => {
+const SidebarLink = ({ id, text, selected }) => {
   return (
-    <button onClick={() => setCurrentIdeaId(id)} className={`sidebar-link${selected ? ' selected' : ''}`}>{text}</button>
+    <Link to={`/${id}`} className={`sidebar-link${selected ? ' selected' : ''}`}>{text}</Link>
   );
 }
 

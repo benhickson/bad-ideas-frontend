@@ -5,7 +5,7 @@ import { RECENT_IDEAS } from '../data/constants';
 
 import SidebarLink from './SidebarLink';
 
-const Sidebar = ({currentIdeaId, setCurrentIdeaId, ideasData, setIdeasData}) => {
+const Sidebar = ({currentIdeaId, ideasData, setIdeasData}) => {
 
   const [offset, setOffset] = useState(0)
 
@@ -28,11 +28,9 @@ const Sidebar = ({currentIdeaId, setCurrentIdeaId, ideasData, setIdeasData}) => 
   const generateIdeaComponents = (ideas, currentIdeaId) => {
     return ideas.map(idea => {
       const selected = (idea.id === currentIdeaId) ? true : false;
-      return <SidebarLink key={idea.id} id={idea.id} text={idea.text} selected={selected} setCurrentIdeaId={setCurrentIdeaId} />
+      return <SidebarLink key={idea.id} id={idea.id} text={idea.text} selected={selected} />
     });
   };
-
-  console.log(ideasData);
 
   return (
     <div id="sidebar">
