@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 // import { CLOUDINARY_CLOUD_NAME } from '../data/constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Idea = ({idea}) => {
+const Idea = ({ idea }) => {
 
   const {
     // id, 
