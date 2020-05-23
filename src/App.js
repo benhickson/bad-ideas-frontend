@@ -6,6 +6,11 @@ import Sidebar from './components/Sidebar';
 import Login from './components/Login';
 import { Redirect } from 'react-router-dom';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
+import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
+library.add(farStar, fasStar);
+
 const App = () => {
 
   const [loggedIn, setLoggedIn] = useState(false);
