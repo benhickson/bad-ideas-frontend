@@ -32,6 +32,8 @@ const Sidebar = ({currentIdeaId, ideasData, setIdeasData}) => {
     });
   };
 
+  console.log(currentIdeaId);
+
   return (
     <div id="sidebar">
       <div id="sidebar-heading">
