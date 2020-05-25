@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import MainContainer from './components/MainContainer';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Login from './components/Login';
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
@@ -14,23 +14,16 @@ library.add(farStar, fasStar);
 const App = () => {
 
   const [loggedIn, setLoggedIn] = useState(false);
+  const [currentIdeaId, setCurrentIdeaId] = useState(null);
   const [ideasData, setIdeasData] = useState({
     ideas: [],
     ideasLoaded: false,
   });
 
-  useEffect(() => {
-    // log in the user if they have an auth_token set
-    if (localStorage.getItem('auth_token')) {
-      setLoggedIn(true);
-    }
-  }, []);
-
-  let { idea_id: currentIdeaId } = useParams();
-
-  // alternate way, without aliased destructuring
-  // let { idea_id } = useParams();
-  // let currentIdeaId = idea_id;
+  // log the user in if they have an auth_token set
+  if (!loggedIn && localStorage.getItem('auth_token')) {
+    setLoggedIn(true);
+  }
 
   return (
     loggedIn
@@ -38,7 +31,7 @@ const App = () => {
       <>
         <Navbar setLoggedIn={setLoggedIn} setIdeasData={setIdeasData} />
         <Sidebar currentIdeaId={currentIdeaId} ideasData={ideasData} setIdeasData={setIdeasData} />
-        <MainContainer ideaId={currentIdeaId} setIdeasData={setIdeasData} />
+        <MainContainer setCurrentIdeaId={setCurrentIdeaId} setIdeasData={setIdeasData} />
       </>
     :
       <>
