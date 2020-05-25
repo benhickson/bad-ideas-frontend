@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-// import { CloudinaryContext, Image, Transformation } from 'cloudinary-react';
-// import { CLOUDINARY_CLOUD_NAME } from '../data/constants';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Idea = ({ idea }) => {
 
   const {
     // id, 
-    image_alt_text, image_host_name, image_base_path, image_filename, text, idea_user_rating, text_user_rating
+    image_alt_text, image_host_name, image_base_path, image_filename, text, 
+    // idea_user_rating, text_user_rating,
   } = idea;
 
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -33,7 +32,7 @@ const Idea = ({ idea }) => {
           : <img src={image_base_path+image_filename+'/450/300.webp'} alt={image_alt_text} onLoad={() => setImageLoaded(true)} />
         }
         <h2 className="idea-text">{text}</h2>
-        <div id="stars-for-idea" className="star-container">
+        {/* <div id="stars-for-idea" className="star-container">
           {
             idea_user_rating
             ? <p>
@@ -52,7 +51,7 @@ const Idea = ({ idea }) => {
               </p>
             : <FontAwesomeIcon icon={['far','star']} />
           }
-        </div>
+        </div> */}
       </div>
       <p style={imageLoaded ? {display: 'none'} : null}>Loading idea...</p>
     </>
