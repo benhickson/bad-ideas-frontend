@@ -8,12 +8,13 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
-button {
+button, a {
   font-family: inherit;
   color: inherit;
   background: none;
   border: none;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 #navbar {
@@ -172,7 +173,8 @@ html {
   overflow: hidden;
   position: relative;
 }
-.sidebar-link:not(.selected):after {
+.sidebar-link:after {
+  transition: all ease-out 200ms;
   content: "";
   text-align: right;
   position: absolute;
@@ -181,6 +183,9 @@ html {
   width: 100%;
   height: 1.6em;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(238, 238, 238) 50%);
+}
+.sidebar-link.selected:after {
+  opacity: 0;
 }
 .sidebar-link:hover {
   background-color: #fff8;
@@ -191,7 +196,10 @@ html {
   padding: 18px 17px 18px 12px;
   color: #000;
   cursor: initial;
-  max-height: 1000px;
+  max-height: 70vh;
+}
+.sidebar-link:not(.selected) {
+  max-height: 150px;
 }
 
 #sidebar-heading {

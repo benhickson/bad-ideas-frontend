@@ -14,7 +14,7 @@ library.add(farStar, fasStar);
 const App = () => {
 
   const [loggedIn, setLoggedIn] = useState(false);
-  const [currentIdeaId, setCurrentIdeaId] = useState(0);
+  const [currentIdeaId, setCurrentIdeaId] = useState(null);
   const [ideasData, setIdeasData] = useState({
     ideas: [],
     ideasLoaded: false,

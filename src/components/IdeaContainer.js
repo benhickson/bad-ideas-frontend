@@ -4,7 +4,7 @@ import GeneratorBar from './GeneratorBar';
 import Idea from './Idea';
 import { IDEAS } from '../data/constants';
 
-const IdeaContainer = ({ ideaId, setCurrentIdeaId, setIdeasData }) => {
+const IdeaContainer = ({ ideaId, setCurrentIdeaId }) => {
 
   const [idea, setIdea] = useState({
     content: {},
@@ -36,14 +36,9 @@ const IdeaContainer = ({ ideaId, setCurrentIdeaId, setIdeasData }) => {
   },[ideaId, setCurrentIdeaId]);  // why do react warnings recommend putting setCurrentIdeaId in this dependency array?
 
   return(
-    <>
-      <GeneratorBar setIdeasData={setIdeasData} />
-      {
-        idea.loaded
-        ? <div><Idea idea={idea.content} /></div>
-        : <p>Loading idea...</p>
-      }
-    </>
+    idea.loaded
+    ? <div><Idea idea={idea.content} /></div>
+    : <p>Loading idea...</p>
   );
 }
 

@@ -5,10 +5,7 @@ import IdeaContainer from './IdeaContainer';
 import GeneratorBar from './GeneratorBar';
 import AddContent from './AddContent';
 
-const MainContainer = ({ideaId, setCurrentIdeaId, setIdeasData}) => {
-
-
-
+const MainContainer = ({ setCurrentIdeaId, setIdeasData}) => {
 
   return (
     <div id="main-content">
@@ -17,11 +14,13 @@ const MainContainer = ({ideaId, setCurrentIdeaId, setIdeasData}) => {
           <AddContent />
         </Route>
         <Route path="/:ideaId" render={routeProps => 
-          <IdeaContainer 
-            ideaId={routeProps.match.params.ideaId} 
-            setIdeasData={setIdeasData} 
-            setCurrentIdeaId={setCurrentIdeaId}
-          />
+          <>
+            <GeneratorBar setIdeasData={setIdeasData} />
+            <IdeaContainer 
+              ideaId={routeProps.match.params.ideaId}
+              setCurrentIdeaId={setCurrentIdeaId}
+            />
+          </>
         } />
         <Route path="/">
           <GeneratorBar setIdeasData={setIdeasData} />
