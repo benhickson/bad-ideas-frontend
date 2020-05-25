@@ -7,6 +7,22 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+
+  /* background-size: 200px 200px; */
+
+  background-image: url('/images/backgrounds/qbkls.png');
+  background-image: url('/images/backgrounds/webb-dark.png');
+  background-image: url('/images/backgrounds/oriental-tiles.png');
+  background-image: url('/images/backgrounds/prism.png');
+  background-image: url('/images/backgrounds/double-bubble-dark.png');
+  background-image: url('/images/backgrounds/connectwork.png');
+  /* background-image: url('/images/backgrounds/PrismResized.png'); */
+  /* background-image: url('/images/backgrounds/circle-blues.png'); */
+  /* background-image: url('/images/backgrounds/circuit.png'); */
+  /* background-image: url('/images/backgrounds/double-bubble.png'); */
+  /* background-image: url('/images/backgrounds/hotel-wallpaper-black.png'); */
+  /* background-image: url('/images/backgrounds/hotel-wallpaper.png'); */
+  /* background-image: url('/images/backgrounds/moroccan-flower-dark.png'); */
 }
 button, a {
   font-family: inherit;
@@ -223,6 +239,7 @@ html {
   text-align: center;
   border-spacing: 0;
   outline: 10px solid #eee;
+  background-color: #eee;
   outline-offset: -10px;
 }
 .idea-wrapper img{
@@ -232,7 +249,7 @@ html {
 .idea-wrapper .idea-text{
   display: table-caption;
   caption-side: bottom;
-  background-color: #0001;
+  background-color: inherit;
   margin: 0;
   padding: 15px 22px;
   text-align: left;
