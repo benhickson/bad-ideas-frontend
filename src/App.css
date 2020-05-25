@@ -7,6 +7,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+  color: white;
 
   /* background-size: 200px 200px; */
 
@@ -241,6 +242,9 @@ html {
   outline: 10px solid #eee;
   background-color: #eee;
   outline-offset: -10px;
+  
+  outline-color: #111;
+  background-color: #111;
 }
 .idea-wrapper img{
   height: 300px;
