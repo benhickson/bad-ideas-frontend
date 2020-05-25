@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import GeneratorBar from './GeneratorBar';
 import Idea from './Idea';
 import { IDEAS } from '../data/constants';
 
@@ -33,7 +32,7 @@ const IdeaContainer = ({ ideaId, setCurrentIdeaId }) => {
 
       fetchIdea();      
     }
-  },[ideaId, setCurrentIdeaId]);  // why do react warnings recommend putting setCurrentIdeaId in this dependency array?
+  },[ideaId, setCurrentIdeaId]);  // why do React warnings recommend putting setCurrentIdeaId in this dependency array?
 
   return(
     idea.loaded
