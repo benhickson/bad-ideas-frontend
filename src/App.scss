@@ -7,16 +7,15 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  color: white;
 
   /* background-size: 200px 200px; */
 
-  background-image: url('/images/backgrounds/qbkls.png');
   background-image: url('/images/backgrounds/webb-dark.png');
-  background-image: url('/images/backgrounds/oriental-tiles.png');
   background-image: url('/images/backgrounds/prism.png');
   background-image: url('/images/backgrounds/double-bubble-dark.png');
   background-image: url('/images/backgrounds/connectwork.png');
+  background-image: url('/images/backgrounds/oriental-tiles.png');
+  background-image: url('/images/backgrounds/qbkls.png');
   /* background-image: url('/images/backgrounds/PrismResized.png'); */
   /* background-image: url('/images/backgrounds/circle-blues.png'); */
   /* background-image: url('/images/backgrounds/circuit.png'); */
@@ -272,7 +271,7 @@ html {
   font-size: 0.9em;
   font-weight: 700;
   background-color: #fff2;
-  /* border-radius: 5px; */
+  border-radius: 150px;
 }
 #generate-button:hover, #generate-button:active {
   background-color: #fff3;
@@ -289,4 +288,42 @@ html {
 }
 #generate-button:hover, #generate-button:active {
   background-color: #fff2;
+}
+
+body.dark-mode {
+  background-color: #222;
+  background-image: url('/images/backgrounds/connectwork.png');
+  color: white;
+
+  #login {
+    color: black;
+  }
+
+  #sidebar {
+    background-color: #292929;
+
+    #sidebar-heading {
+      border-bottom-color: #fff1;
+    }
+    .sidebar-heading-link {
+      color: #fff8;
+    }
+    .sidebar-link {
+      color: #fffa;
+      border-bottom-color: #fff1;
+    }
+    .sidebar-link:hover {
+      background-color: #393939;
+    }
+    .sidebar-link:after {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #292929 50%);
+    }
+    .sidebar-link:hover:after {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #393939 50%);
+    }
+    .sidebar-link.selected {
+      background-color: #313131;
+      color: #fffe;
+    }
+  }
 }
