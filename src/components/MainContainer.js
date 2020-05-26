@@ -32,3 +32,6 @@ const MainContainer = ({ setCurrentIdeaId, setIdeasData}) => {
 }
 
 export default MainContainer;
+
+// TODO: consider refactoring routing to something like this:
+// https://gist.github.com/jefflau/85ea8f071dc0ab81f61b0e8a7d9e5b23
