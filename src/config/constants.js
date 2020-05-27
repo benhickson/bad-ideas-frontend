@@ -9,12 +9,13 @@ const IDEAS =         API_ENDPOINT+'/ideas';
 const RECENT_IDEAS =  API_ENDPOINT+'/ideas/recent';
 const LOGIN =         API_ENDPOINT+'/login';
 const GENERATE_IDEA = API_ENDPOINT+'/ideas/generate';
-const UPLOAD_IMAGE = API_ENDPOINT+'/idea_images';
+const UPLOAD_IMAGE =  API_ENDPOINT+'/idea_images';
+const ADD_BRAND =     API_ENDPOINT+'/idea_brands';
 
 const CLOUDINARY_CLOUD_NAME = 'badideas';
 const CLOUDINARY_UPLOAD_PRESET = 'unsigned_uploads_v1';
 
 export { 
-  API_ENDPOINT, IDEAS, RECENT_IDEAS, LOGIN, GENERATE_IDEA, UPLOAD_IMAGE,
+  API_ENDPOINT, IDEAS, RECENT_IDEAS, LOGIN, GENERATE_IDEA, UPLOAD_IMAGE, ADD_BRAND,
   CLOUDINARY_CLOUD_NAME, CLOUDINARY_UPLOAD_PRESET,
 };

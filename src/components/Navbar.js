@@ -12,7 +12,7 @@ const Navbar = ({ setLoggedIn, setIdeasData }) => {
         setLoggedIn(false);
         setIdeasData(d => ({...d, ideasLoaded: false, ideas: [] }));
       }}>Log Out</button>
-      <NavLink to='/add-content' className="nav-link" activeClassName="active">Add Content</NavLink>
+      <NavLink to='/add-content' className="nav-link" activeClassName="active">Add Images and Brands</NavLink>
     </div>
   );
 }

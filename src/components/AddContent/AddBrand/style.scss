@@ -1,0 +1,25 @@
+#add-brand {
+
+  & > button, & > input {
+    font-size: 0.9em;
+    border-radius: 3px;
+    padding: 10px 25px;
+    display: inline-block;
+    margin: 10px;
+  }
+
+  & > button {
+    background-color: #0d7ede;
+    // text-transform: uppercase;
+    font-weight: 500;
+  }
+   
+  & > input {
+    border: none;
+  }
+
+  button.disabled{
+    pointer-events: none;
+    opacity: 0.4;
+  }
+}

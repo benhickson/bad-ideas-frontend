@@ -20,7 +20,7 @@ const UploadedImage = ({publicId}) => {
         </Image>
       </div>
       <div className="options-box">
-        Options will go here.
+        {/* Options will go here. */}
         {/* <label htmlFor={`description-${publicId}`}>Description:
           <input id={`description-${publicId}`} type="text" name="description" placeholder="Description" value={description} 
                  onChange={event => setDescription(event.target.value)} />

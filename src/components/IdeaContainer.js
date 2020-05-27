@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Idea from './Idea';
-import { IDEAS } from '../data/constants';
+import { IDEAS } from '../config/constants';
 
 const IdeaContainer = ({ ideaId, setCurrentIdeaId }) => {
 
