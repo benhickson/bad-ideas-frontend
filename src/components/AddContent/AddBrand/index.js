@@ -54,13 +54,14 @@ const AddBrand = () => {
       // TODO: show a red X in the box to indicate
     }
   }
+  
+  const imageHeight = 200; // for the cloudinary transformation, keep this the same as the main display.
 
   const renderImage = (publicId) => {
-    const image_height = 200; // for the cloudinary transformation, keep this the same as the main display.
     return (
       <CloudinaryContext cloudName={CLOUDINARY_CLOUD_NAME}>
-        <Image publicId={publicId} width="200">
-          <Transformation height={image_height * 2} crop="scale" quality="auto" fetchFormat="auto" />
+        <Image publicId={publicId} height={imageHeight}>
+          <Transformation height={imageHeight * 2} crop="scale" quality="auto" fetchFormat="auto" />
         </Image>
       </CloudinaryContext>
     )
@@ -68,13 +69,23 @@ const AddBrand = () => {
 
   return (
     <div id="add-brand">
+
+      <input type="text" placeholder="Enter Name" value={brandName} onChange={event => setBrandName(event.target.value)} /><br />
+      <button id="upload-brand-image-button" onClick={beginImageUpload}>Select Image</button><br />
       {
         imagePublicId.length > 0
         ? renderImage(imagePublicId)
-        : null
+        : <div style={{
+            height:`${imageHeight}px`, 
+            width: `${imageHeight * 1.5}px`, 
+            textAlign: 'center', 
+            backgroundColor: '#0008',
+            paddingTop: '80px',
+            boxSizing: 'border-box',
+            marginLeft: '50%',
+            transform: 'translateX(-50%)',
+          }}>Select an image</div>
       }
-      <button id="upload-brand-image-button" onClick={beginImageUpload}>Select Image</button>
-      <input type="text" placeholder="Enter Name" value={brandName} onChange={event => setBrandName(event.target.value)} />
       <button id="save-brand-button" className={
         imagePublicId.length > 0 && brandName.length > 0
         ? null
