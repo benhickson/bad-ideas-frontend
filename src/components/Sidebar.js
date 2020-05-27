@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import { RECENT_IDEAS } from '../data/constants';
+import { RECENT_IDEAS } from '../config/constants';
 
 import SidebarLink from './SidebarLink';
 
