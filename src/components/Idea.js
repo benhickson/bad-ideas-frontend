@@ -31,7 +31,14 @@ const Idea = ({ idea }) => {
             </CloudinaryContext> */
           : <img src={image_base_path+image_filename+'/450/300.webp'} alt={image_alt_text} onLoad={() => setImageLoaded(true)} />
         }
-        <h2 className="idea-text">{text}</h2>
+        <h2 className="idea-text">
+          {text}
+          {
+            idea.branded
+            ? <img id="brand-image" src={idea.brand_image_base_path+'c_scale,f_auto,h_'+(100 * 2)+',q_auto/'+idea.brand_image_filename} alt={idea.brand_name} />
+            : null
+          }
+        </h2>
         {/* <div id="stars-for-idea" className="star-container">
           {
             idea_user_rating
